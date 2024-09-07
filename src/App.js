@@ -1,16 +1,30 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
-
+import Navbar from './components/Navbar';
 import Blog from './pages/Blog';
 import Home from './pages/Home';
+import  updateProduct  from './Product/actions';
+import AddForm from './Product/AddForm';
+import './App.css'
+import axios from 'axios';
 
 function App() {
+ 
+
   return (
+    <>
+    <div className='navBar'>
+      <Navbar/>
+    </div>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/blog/:id" element={<Blog />} />
+
+      <Route path="/create-product" element={<AddForm />} />
+      <Route path="/update-product/:id" element={<updateProduct />} />
     </Routes>
+    </>
   );
 }
 

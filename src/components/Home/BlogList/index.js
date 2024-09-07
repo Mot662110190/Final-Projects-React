@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import BlogItem from './BlogItem';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const BlogList = ({ blogs }) => {
-  console.log(blogs); // ตรวจสอบข้อมูลที่ถูกส่งเข้ามา
+console.log("blogs::", blogs );
+
+  // ใช้ useEffect เพื่อดึงข้อมูลจาก REST API
+  // useEffect(() => {
+  //   const fetchBlogs = async () => {
+  //     try {
+  //       const response = await axios.get('https://apimocha.com/contentzz/all');
+  //       setBlogs(response.data);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error('Error fetching blogs', error);
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchBlogs();
+  // }, []);
+
+  // if (loading) {
+  //   return <p>Loading blogs...</p>;
+  // }
 
   return (
     <StyledBlogList>
-      {Array.isArray(blogs) && blogs.length > 0 ? (
+      {blogs.length > 0 ? (
         blogs.map((blog) => <BlogItem key={blog.id} blog={blog} />)
       ) : (
         <p>No blogs available</p>

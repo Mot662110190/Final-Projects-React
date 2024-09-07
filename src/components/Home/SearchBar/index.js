@@ -39,7 +39,7 @@ const StyledSearchBar = styled(SearchBar)`
   form {
     display: flex;
     align-items: center;
-    width: 10%;
+    width: 30%;
    padding: 10px;
     justify-content: center;
   }
