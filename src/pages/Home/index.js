@@ -1,13 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import EmptyList from '../../components/common/EmptyList';
 import BlogList from '../../components/Home/BlogList';
 import Header from '../../components/Home/Header';
 import SearchBar from '../../components/Home/SearchBar';
 import { blogList } from '../../config/data';
+import axios from 'axios';
 
 const Home = () => {
-  const [blogs, setBlogs] = useState(blogList);
+  // const [blogs, setBlogs] = useState([]);
   const [searchKey, setSearchKey] = useState('');
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await axios.get('https://apimocha.com/contentzz/all');
+        setBlogs(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching blogs', error);
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
+  if (loading) {
+    return <p>Loading blogs...</p>;
+  }
 
   // Search submit
   const handleSearchBar = (e) => {

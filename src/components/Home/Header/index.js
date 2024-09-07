@@ -8,10 +8,7 @@ const Header = ({ className }) => (
     <h1>
       <span>“</span> Blog <span>”</span>
     </h1>
-    <p>
-      Awesome place to make oneself <br /> productive and entertained through
-      daily updates.
-    </p>
+    
   </header>
 );
 
@@ -20,7 +17,7 @@ Header.propTypes = {
 };
 
 const StyledHeader = styled(Header)`
-  text-align: center;
+  text-align: left;
 
   h2 {
     color: #0080ff;

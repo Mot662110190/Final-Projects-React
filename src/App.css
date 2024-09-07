@@ -22,3 +22,9 @@ input {
   margin: 0 auto;
   padding: 1rem 0;
 }
+
+.navBar {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
